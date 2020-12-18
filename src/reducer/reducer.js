@@ -16,19 +16,19 @@ export default function reducer (state = { ...game }, action ) {
         // get rid of duplicate letters from solution then alphabetically sort it
         const unique = solution.filter(
             (elem,index,self) => (index===self.indexOf(elem))
-        ).sort();
+            ).sort();
 
         // compare
         const solved = JSON.stringify(unique) === JSON.stringify(compare);
-    
+        
     	// return updated state
     	return {
     		...state, ...{solved: solved}
     	};
-	}
+    }
 
-	if (action.type === 'GUESSED_CORRECT')
-	{
+    if (action.type === 'GUESSED_CORRECT')
+    {
 		// remove letter from available letters
 		const index = state.available_letters.indexOf(action.letter);
         let newAvailableLetters = [...state.available_letters];
@@ -42,10 +42,10 @@ export default function reducer (state = { ...game }, action ) {
         return {
         	...state, ...{ available_letters: newAvailableLetters, correct_letters: newCorrectUsedLetters }
         };
-	}
+    }
 
-	if (action.type === 'GUESSED_WRONG')
-	{
+    if (action.type === 'GUESSED_WRONG')
+    {
 		// get rid of letter from available letters
 		const index = state.available_letters.indexOf(action.letter);
         let newAvailableLetters = [...state.available_letters];
@@ -63,7 +63,7 @@ export default function reducer (state = { ...game }, action ) {
         return {
             ...state, ...{ available_letters: newAvailableLetters , lives: newValueLives }
         };
-	}
+    }
 
-	return state;
+    return state;
 }
