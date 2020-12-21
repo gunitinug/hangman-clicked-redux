@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Game = () => {
+const Game = props => {
 	return (
 		<div>
-			abc
+			{JSON.stringify(props.state)}
 		</div>
 	);
 };
