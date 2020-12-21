@@ -61,7 +61,7 @@ export default function reducer (state = { ...game }, action ) {
 
         // return updated state
         return {
-            ...state, ...{ available_letters: newAvailableLetters , lives: newValueLives }
+            ...state, ...{ available_letters: newAvailableLetters , lives: newValueLives<0 ? 0 : newValueLives }
         };
     }
 
