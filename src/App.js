@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSolved, guessedCorrect, gussedWrong } from './actions/actions';
+import { setSolved, guessedCorrect, guessedWrong } from './actions/actions';
 import Game from './Game/Game';
 
 class App extends Component {
@@ -13,12 +13,12 @@ class App extends Component {
   };
 
   onGuessedWrong = (letter) => {
-    this.props.dispatch(gussedWrong(letter));
+    this.props.dispatch(guessedWrong(letter));
   };
 
   render() {
     return (
-      <Game state={this.props.state} solved={this.onSetSolved} correct={onGuessedCorrect} wrong={onGuessedWrong} />
+      <Game state={this.props.state} solved={this.onSetSolved} correct={this.onGuessedCorrect} wrong={this.onGuessedWrong} />
     );
   }
 }
