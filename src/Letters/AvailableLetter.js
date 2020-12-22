@@ -18,7 +18,7 @@ const AvailableLetter = props => {
     };
 
     return (
-    	<span onClick={setStuff}>{props.alphabet}</span>
+    	<span style={{padding: "1em"}} onClick={setStuff}>{props.alphabet}</span>
     );
 }
 

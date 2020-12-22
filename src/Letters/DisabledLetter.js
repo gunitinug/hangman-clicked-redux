@@ -2,7 +2,7 @@ import React from 'react';
 
 const DisabledLetter = (props) => {
     return (
-    <span>{props.alphabet}</span>
+    <span style={{color: "red", padding: "1em"}}>{props.alphabet}</span>
     );
 };
 
