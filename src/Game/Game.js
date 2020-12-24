@@ -13,7 +13,7 @@ const Game = props => {
 	return (
 		<div>
 			<Progress solution={props.state.solution} correctLetters={props.state.correct_letters} />
-			<Letters solved={props.solved} solution={props.state.solution} correct={props.correct} wrong={props.wrong} />
+			<Letters isSolved={props.state.solved} solved={props.solved} solution={props.state.solution} correct={props.correct} wrong={props.wrong} />
 			<div>{JSON.stringify(props.state)}</div>
 		</div>
 	);
