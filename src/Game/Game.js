@@ -2,7 +2,14 @@ import React from 'react';
 import Progress from '../Progress/Progress';
 import Letters from '../Letters/Letters';
 
+let nth = 1;
+
 const Game = props => {
+	// jump to next one if solved?
+	if (props.state.solved) {
+		props.next(++nth);
+	}
+
 	return (
 		<div>
 			<Progress solution={props.state.solution} correctLetters={props.state.correct_letters} />
