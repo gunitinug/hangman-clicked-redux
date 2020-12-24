@@ -17,3 +17,17 @@ export function guessedWrong( letter ) {
 		letter
 	}
 }
+
+export function playNext( nth ) {
+	return {
+		type: 'PLAY_NEXT',
+		nth
+	}
+}
+
+export function finished( nth ) {
+	return {
+		type: 'FINISHED',
+		nth
+	}
+}

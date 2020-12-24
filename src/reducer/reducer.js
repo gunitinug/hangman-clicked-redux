@@ -1,9 +1,12 @@
+const bank = ['my name is logan', 'i like coding', 'merrry xmas'];
+
 const game = {
 	solution: 'my name is logan',
 	available_letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
 	correct_letters: [],
 	lives: 12,
-	solved: false
+	solved: false,
+    finished: false
 };
 
 export default function reducer (state = { ...game }, action ) {
@@ -63,6 +66,28 @@ export default function reducer (state = { ...game }, action ) {
         return {
             ...state, ...{ available_letters: newAvailableLetters , lives: newValueLives<0 ? 0 : newValueLives }
         };
+    }
+
+    if (action.type === 'PLAY_NEXT') {
+        const next_solution = bank[action.nth-1];
+
+        return {
+            ...game, solution: next_solution
+        };
+    }
+
+    if (action.type === 'FINISHED') {
+        if (bank.length === action.nth) {
+            return {
+                ...state, finished: true
+            };
+        }
+
+        else {
+            return {
+                ...state, finished: false
+            }
+        }
     }
 
     return state;
