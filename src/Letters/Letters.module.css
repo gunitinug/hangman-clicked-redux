@@ -1,19 +1,19 @@
 .letters {
   display: flex;
-  flex-flow: row wrap;  
+  flex-flow: row wrap;    
 }
 
 span {
-  flex: 1 25%;
+  flex: 1 12.5%;
   text-align: center;
   background-color: lightgrey;
   box-sizing: border-box;
-  padding: 2em;
+  padding: 1em 0;
 }
 
 .letters::after {
     content: "";
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .disabledLetter {
