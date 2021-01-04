@@ -1,0 +1,4 @@
+.progress {
+	font-size: calc(100vw / 10);
+	margin-bottom: 5vh;
+}

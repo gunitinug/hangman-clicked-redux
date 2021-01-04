@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './Letters.module.css';
 
 const DisabledLetter = (props) => {
     return (
-    <span style={{color: "red", padding: "1em"}}>{props.alphabet}</span>
+    <span className={ styles.disabledLetter }>{props.alphabet}</span>
     );
 };
 

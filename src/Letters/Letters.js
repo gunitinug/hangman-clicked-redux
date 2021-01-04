@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AvailableLetter from './AvailableLetter';
 import DisabledLetter from './DisabledLetter';
+import styles from './Letters.module.css';
 
 const Letters = props => {
 	const [lettersMap, setLettersMap]=useState(
@@ -61,7 +62,7 @@ const Letters = props => {
     );
 
     return (
-    	<div>{renderedLetters}</div>
+    	<div className={ styles.letters }>{renderedLetters}</div>
     );
 }
 

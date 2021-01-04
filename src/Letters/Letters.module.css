@@ -1,0 +1,21 @@
+.letters {
+  display: flex;
+  flex-flow: row wrap;  
+}
+
+span {
+  flex: 1 25%;
+  text-align: center;
+  background-color: lightgrey;
+  box-sizing: border-box;
+  padding: 2em;
+}
+
+.letters::after {
+    content: "";
+    flex-basis: 50%;
+}
+
+.disabledLetter {
+  background-image: linear-gradient(grey, white);
+}

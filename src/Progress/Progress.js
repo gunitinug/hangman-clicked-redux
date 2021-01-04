@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Progress.module.css';
 
 const Progress = props => {
 	const solution = [...props.solution];
@@ -16,7 +17,7 @@ const Progress = props => {
     )
 
 	return (
-		<div>{output.join('\xa0')}</div>
+		<div className={ styles.progress }>{output.join('\xa0')}</div>
 	);
 }
 
