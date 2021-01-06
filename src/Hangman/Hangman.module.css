@@ -1,0 +1,8 @@
+.hangman {	
+	height: 40vh;
+}
+
+.hangman img {
+	width: inherit;
+	height: inherit;
+}

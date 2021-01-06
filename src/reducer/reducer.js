@@ -16,7 +16,7 @@ const game = {
     hint: 'the distance from the top or surface to the bottom of something.',
 	available_letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
 	correct_letters: [],
-	lives: 12,
+	lives: 11,
 	solved: false,
     finished: false
 };

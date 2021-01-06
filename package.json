@@ -1,5 +1,6 @@
 {
   "name": "hangman-clicked-redux",
+  "homepage": "http://wiz.dx.am/hangman",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
