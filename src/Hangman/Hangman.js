@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import styles from './Hangman.module.css';
 
@@ -15,7 +15,25 @@ import nine from '../images/nine.png';
 import ten from '../images/ten.png';
 import eleven from '../images/eleven.png';
 
-const hangman = (props) => {   
+const Hangman = (props) => {   
+
+    const [loading,setLoading] = useState(true);
+    
+    // When the image finishes loading make loading... message disappear.
+    const imageLoadedHandler = () => {
+        setLoading(false);
+    };
+
+    // We want loading... message to reappear if we are about to draw a different hangman image.
+    useEffect(()=>{
+        setLoading(true);
+    },[props.lives]);
+
+    let loader = null;
+    
+    if (loading) {
+        loader = <div>loading...</div>;
+    }    
 
     let hangmanImage = zero;
 
@@ -59,10 +77,13 @@ const hangman = (props) => {
     }
     
     return (
-        <div className={styles.hangman}>
-            <img src={hangmanImage} alt="hangman pic" />
-        </div>
+        <React.Fragment>
+            {loader}
+            <div className={styles.hangman}>
+                <img src={hangmanImage} alt="hangman pic" onLoad={imageLoadedHandler} onError={imageLoadedHandler}/>
+            </div>
+        </React.Fragment>
     );
 }
 
-export default hangman;
+export default Hangman;
