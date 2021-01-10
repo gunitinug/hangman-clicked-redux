@@ -31,10 +31,3 @@ export function finished( nth ) {
 		nth
 	}
 }
-
-export function restarted( b ) {
-	return {
-		type: 'RESTARTED',
-		b
-	}
-}

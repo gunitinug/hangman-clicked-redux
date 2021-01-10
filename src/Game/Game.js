@@ -6,14 +6,11 @@ import styles from './Game.module.css';
 
 let nth = 1;
 
-const Game = props => {	
+const Game = props => {		
 
-	// Reset game when game is restarted
-	// Not only you reset game you reset letters map too!
+	// Reset game when game is restarted	
 	const resetGameHandler = () => {
-		props.next(1);
-		props.restarted(true);
-		props.restarted(false);
+		props.next(1);	
 	};
 
 	//If player solves current riddle and it is not the last one
@@ -39,7 +36,7 @@ const Game = props => {
 				<Hangman lives={props.state.lives} />
 				<Progress solution={props.state.solution} correctLetters={props.state.correct_letters} />
 				<Letters isSolved={props.state.solved} solved={props.solved} solution={props.state.solution} 
-					correct={props.correct} wrong={props.wrong} isRestarted={props.state.restarted} lives={props.state.lives} />
+					correct={props.correct} wrong={props.wrong} lives={props.state.lives} />
 				<div>Hint: {props.state.hint}</div>
 				<div>{JSON.stringify(props.state)}</div>
 				<div>{props.state.solved && props.state.finished ? 'finished' : 'still riddles remain'}</div>
