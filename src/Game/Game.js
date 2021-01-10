@@ -16,7 +16,6 @@ const Game = props => {
 		props.restarted(false);
 	};
 
-
 	//If player solves current riddle and it is not the last one
 	if (props.state.solved && !props.state.finished) {
 		// then play the next riddle and try to finish
@@ -40,7 +39,7 @@ const Game = props => {
 				<Hangman lives={props.state.lives} />
 				<Progress solution={props.state.solution} correctLetters={props.state.correct_letters} />
 				<Letters isSolved={props.state.solved} solved={props.solved} solution={props.state.solution} 
-					correct={props.correct} wrong={props.wrong} isRestarted={props.state.restarted} />
+					correct={props.correct} wrong={props.wrong} isRestarted={props.state.restarted} lives={props.state.lives} />
 				<div>Hint: {props.state.hint}</div>
 				<div>{JSON.stringify(props.state)}</div>
 				<div>{props.state.solved && props.state.finished ? 'finished' : 'still riddles remain'}</div>

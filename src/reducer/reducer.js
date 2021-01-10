@@ -105,8 +105,10 @@ export default function reducer (state = { ...game }, action ) {
     }
 
     if (action.type === 'RESTARTED') {
+        const b = action.b;
+
         return {
-            ...state, restarted: action.b
+            ...state, restarted: b
         }
     }
 

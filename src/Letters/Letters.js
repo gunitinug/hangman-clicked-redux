@@ -21,7 +21,7 @@ const Letters = props => {
             );
         }
 
-        if (props.isRestarted) {
+        if (props.lives === 0) {
             console.log('resetting letters map...');
             setLettersMap(
                 {
@@ -29,7 +29,7 @@ const Letters = props => {
                 }
             );
         }
-    }, [props.isSolved, props.isRestarted]);
+    }, [props.isSolved, props.lives]);
 
     const updateClickedHandler = (letter) => {
         setLettersMap(
