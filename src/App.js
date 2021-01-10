@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSolved, guessedCorrect, guessedWrong, playNext, finished } from './actions/actions';
+import { setSolved, guessedCorrect, guessedWrong, playNext, finished, restarted } from './actions/actions';
 import Game from './Game/Game';
 
 class App extends Component {
@@ -24,9 +24,14 @@ class App extends Component {
     this.props.dispatch(finished(nth));
   }
 
+  onRestarted = (b) => {
+    this.props.dispatch(restarted(b));
+  }
+
   render() {
     return (
-      <Game state={this.props.state} solved={this.onSetSolved} correct={this.onGuessedCorrect} wrong={this.onGuessedWrong} next={this.onPlayNext} finish={this.onFinished} />
+      <Game state={this.props.state} solved={this.onSetSolved} correct={this.onGuessedCorrect} 
+        wrong={this.onGuessedWrong} next={this.onPlayNext} finish={this.onFinished} restarted={this.onRestarted} />
     );
   }
 }

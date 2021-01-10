@@ -11,6 +11,7 @@ const Letters = props => {
     );
 
     // reset letters map only after riddle is just solved and not every time.
+    // also reset leters map if game restarts.
     useEffect(()=>{
         if (props.isSolved) {
             setLettersMap(
@@ -18,8 +19,17 @@ const Letters = props => {
                     "a":false,"b":false,"c":false,"d":false,"e":false,"f":false,"g":false,"h":false,"i":false,"j":false,"k":false,"l":false,"m":false,"n":false,"o":false,"p":false,"q":false,"r":false,"s":false,"t":false,"u":false,"v":false,"w":false,"x":false,"y":false,"z":false
                 }
             );
-        }        
-    }, [props.isSolved]);
+        }
+
+        if (props.isRestarted) {
+            console.log('resetting letters map...');
+            setLettersMap(
+                {
+                    "a":false,"b":false,"c":false,"d":false,"e":false,"f":false,"g":false,"h":false,"i":false,"j":false,"k":false,"l":false,"m":false,"n":false,"o":false,"p":false,"q":false,"r":false,"s":false,"t":false,"u":false,"v":false,"w":false,"x":false,"y":false,"z":false
+                }
+            );
+        }
+    }, [props.isSolved, props.isRestarted]);
 
     const updateClickedHandler = (letter) => {
         setLettersMap(
@@ -49,7 +59,8 @@ const Letters = props => {
           if (!lettersMap[letter])     //letter is not yet clicked
           {
             return (
-                <AvailableLetter updateClicked={()=>updateClickedHandler(letter)} solved={props.solved} play={()=>playHandler(letter)} correct={()=>props.correct(letter)} wrong={()=>props.wrong(letter)} alphabet={letter} key={i} />
+                <AvailableLetter updateClicked={()=>updateClickedHandler(letter)} solved={props.solved} 
+                    play={()=>playHandler(letter)} correct={()=>props.correct(letter)} wrong={()=>props.wrong(letter)} alphabet={letter} key={i} />
             )
           }
           else                         //letter is clicked

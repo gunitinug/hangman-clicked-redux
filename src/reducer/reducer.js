@@ -18,7 +18,8 @@ const game = {
 	correct_letters: [],
 	lives: 11,
 	solved: false,
-    finished: false
+    finished: false,
+    restarted: false
 };
 
 export default function reducer (state = { ...game }, action ) {
@@ -100,6 +101,12 @@ export default function reducer (state = { ...game }, action ) {
             return {
                 ...state, finished: false
             }
+        }
+    }
+
+    if (action.type === 'RESTARTED') {
+        return {
+            ...state, restarted: action.b
         }
     }
 
