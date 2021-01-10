@@ -13,6 +13,7 @@ const Game = props => {
 	// Reset game when game is restarted	
 	const resetGameHandler = () => {
 		props.next(1);	
+		nth = 1;
 	};
 
 	//If player solves current riddle and it is not the last one
