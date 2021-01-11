@@ -10,11 +10,18 @@ const debug = false;
 
 const Game = props => {		
 
-	// Reset game when game is restarted	
-	const resetGameHandler = () => {
-		props.next(1);	
-		nth = 1;
+	// Retry game
+	const retryGameHandler = () => {
+		// resuming game
+		props.next(nth);			
 	};
+
+	// Reset game
+	const resetGameHandler = () => {
+		// Restart from the first riddle
+		props.next(1);
+		nth = 1;
+	}
 
 	//If player solves current riddle and it is not the last one
 	if (props.state.solved && !props.state.finished) {
@@ -30,7 +37,7 @@ const Game = props => {
 	{
 		modal = <React.Fragment>
 					<div className={styles.overlay}></div>
-					<div className={styles.askforrestart + ' ' + styles.shake} onClick={resetGameHandler} >RESTART?</div>
+					<div className={styles.askforrestart + ' ' + styles.shake} onClick={retryGameHandler} >RETRY?</div>
 				</React.Fragment>;
 	}
 
