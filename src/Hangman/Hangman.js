@@ -19,20 +19,31 @@ const Hangman = (props) => {
 
     const [loading,setLoading] = useState(true);
     
-    // When the image finishes loading make loading... message disappear.
-    const imageLoadedHandler = () => {
-        setLoading(false);
-    };
+    // Cache all images at once when game starts
+    useEffect(() => {
+        const cacheImages = async (srcArray) => {
+            const promises = await srcArray.map((src) => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.src=src;
+                    img.onload=resolve();
+                    img.onerror=reject();
+                });
+            });
 
-    // We want loading... message to reappear if we are about to draw a different hangman image.
-    useEffect(()=>{
-        setLoading(true);
-    },[props.lives]);
+            await Promise.all(promises);
+            setLoading(false);
+        };
+
+        const imgs = [ zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven ];
+
+        cacheImages(imgs);
+    }, []);
 
     let loader = null;
     
     if (loading) {
-        loader = <div>loading...</div>;
+        loader = <div>caching all images before game starts...</div>;
     }    
 
     let hangmanImage = zero;
@@ -80,7 +91,7 @@ const Hangman = (props) => {
         <React.Fragment>
             {loader}
             <div className={styles.hangman}>
-                <img src={hangmanImage} alt="hangman pic" onLoad={imageLoadedHandler} onError={imageLoadedHandler}/>
+                <img src={hangmanImage} alt="hangman pic" />
             </div>
         </React.Fragment>
     );
